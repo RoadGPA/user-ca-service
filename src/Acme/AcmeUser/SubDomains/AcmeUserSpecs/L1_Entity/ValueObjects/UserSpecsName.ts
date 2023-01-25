@@ -1,7 +1,10 @@
-import {RequiredString} from "../../../../../Shared/L1_Entity/ValueObjects/RequiredString";
+import {
+  RequiredStringMaxLength
+} from "../../../../../Shared/L1_Entity/ValueObjects/RequiredStringMaxLength";
+import {EXCEPTION_CODE_USER_NAME} from "../../../../../Shared/L1_Entity/Exceptions/ExceptionCodes";
 
-export class UserSpecsName extends RequiredString<Error>{
+export class UserSpecsName extends RequiredStringMaxLength {
   constructor(value: string) {
-    super(value, new Error("User Name is invalid"));
+    super(value, 250, EXCEPTION_CODE_USER_NAME);
   }
 }

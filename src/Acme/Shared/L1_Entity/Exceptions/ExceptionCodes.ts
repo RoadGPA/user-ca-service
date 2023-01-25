@@ -1,0 +1,1 @@
+export const EXCEPTION_CODE_USER_NAME = "F-001";

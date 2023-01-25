@@ -1,8 +1,7 @@
-import {CompositeSpecification} from "./CompositeSpecification";
+import {Specification} from "./Specification";
 
-export class RequiredStringSpec implements CompositeSpecification<string> {
-  isSatisfiedBy(value: string): boolean {
-    return typeof value === "string" && value.trim().length > 0;
+export class RequiredStringSpec implements Specification<string> {
+  isSatisfiedBy(candidate: string): boolean {
+    return typeof candidate === "string" && candidate.trim().length > 0;
   }
-
 }
