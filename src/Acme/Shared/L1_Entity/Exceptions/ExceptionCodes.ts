@@ -1,0 +1,2 @@
+export const EXCEPTION_CODE_USER_NAME = "F-001";
+export const EXCEPTION_CODE_USER_FIRST_NAME = "F-002";
