@@ -1,7 +1,7 @@
 import {Specification} from "../Specifications/Specification";
 import {RequiredStringSpec} from "../Specifications/RequiredStringSpec";
 import {StringMaxLengthSpec} from "../Specifications/StringMaxLengthSpec";
-import {AndSpecification} from "../Specifications/AndSpecification";
+
 import {InvalidRequiredStringMaxLength} from "../Exceptions/InvalidRequiredStringMaxLength";
 
 export class RequiredStringMaxLength {
@@ -31,7 +31,7 @@ export class RequiredStringMaxLength {
   }
 
   private valueObjectSpec(): Specification<string> {
-    return new AndSpecification(this.#requiredStringSpec, this.#stringMaxLengthSpec)
+    return this.#requiredStringSpec.and(this.#stringMaxLengthSpec);
   }
 
 }

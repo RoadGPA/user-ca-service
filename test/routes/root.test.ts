@@ -1,11 +1,25 @@
-import { test } from 'tap'
-import { build } from '../helper'
+import {FastifyInstance} from "fastify";
+import {buildApp, closeApp} from "../helper";
 
-test('default root route', async (t) => {
-  const app = await build(t)
+describe('/root',  () => {
+  let app: FastifyInstance;
 
-  const res = await app.inject({
-    url: '/'
+  beforeEach(async () => {
+    app = await buildApp();
+  });
+
+  afterEach(async () => {
+    await closeApp(app);
+  });
+
+  it('default root route', async () => {
+    const app = await buildApp()
+
+    const res = await app.inject({
+      url: '/'
+    })
+
+    expect(JSON.parse(res.payload)).toStrictEqual({ root: true });
   })
-  t.same(JSON.parse(res.payload), { root: true })
-})
+});
+

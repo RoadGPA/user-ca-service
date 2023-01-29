@@ -1,14 +1,12 @@
+import { validate, version } from "uuid";
+
 import {Specification} from "./Specification";
 import {AndSpecification} from "./Composite/AndSpecification";
 import {OrSpecification} from "./Composite/OrSpecification";
 
-export class StringMaxLengthSpec implements Specification<string> {
-  readonly #maxLength: number;
-  constructor(maxLength: number) {
-    this.#maxLength = maxLength;
-  }
+export class UUIDV4Spec implements Specification<string> {
   isSatisfiedBy(candidate: string): boolean {
-    return typeof candidate === "string" && candidate.length <= this.#maxLength;
+    return validate(candidate) && version(candidate) === 4;
   }
 
   and(spec: Specification<string>): Specification<string> {
@@ -18,4 +16,5 @@ export class StringMaxLengthSpec implements Specification<string> {
   or(spec: Specification<string>): Specification<string> {
     return new OrSpecification(this, spec);
   }
+
 }

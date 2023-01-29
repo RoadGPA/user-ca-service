@@ -1,14 +1,17 @@
+import { DateTime } from "luxon";
+
 import {Specification} from "./Specification";
 import {AndSpecification} from "./Composite/AndSpecification";
 import {OrSpecification} from "./Composite/OrSpecification";
 
-export class StringMaxLengthSpec implements Specification<string> {
-  readonly #maxLength: number;
-  constructor(maxLength: number) {
-    this.#maxLength = maxLength;
+export class MaxDateLimitSpec implements Specification<string> {
+  readonly #maxDateLimit: string;
+
+  constructor(maxDateLimit: string) {
+    this.#maxDateLimit = maxDateLimit;
   }
   isSatisfiedBy(candidate: string): boolean {
-    return typeof candidate === "string" && candidate.length <= this.#maxLength;
+    return DateTime.fromISO(candidate) <= DateTime.fromISO(this.#maxDateLimit);
   }
 
   and(spec: Specification<string>): Specification<string> {
@@ -18,4 +21,5 @@ export class StringMaxLengthSpec implements Specification<string> {
   or(spec: Specification<string>): Specification<string> {
     return new OrSpecification(this, spec);
   }
+
 }

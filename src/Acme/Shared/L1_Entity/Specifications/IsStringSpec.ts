@@ -2,13 +2,9 @@ import {Specification} from "./Specification";
 import {AndSpecification} from "./Composite/AndSpecification";
 import {OrSpecification} from "./Composite/OrSpecification";
 
-export class StringMaxLengthSpec implements Specification<string> {
-  readonly #maxLength: number;
-  constructor(maxLength: number) {
-    this.#maxLength = maxLength;
-  }
-  isSatisfiedBy(candidate: string): boolean {
-    return typeof candidate === "string" && candidate.length <= this.#maxLength;
+export class IsStringSpec implements Specification<string> {
+  isSatisfiedBy(value: string): boolean {
+    return typeof value === "string";
   }
 
   and(spec: Specification<string>): Specification<string> {

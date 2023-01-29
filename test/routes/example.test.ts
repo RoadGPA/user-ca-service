@@ -1,12 +1,25 @@
-import { test } from 'tap'
-import { build } from '../helper'
+import {buildApp, closeApp} from '../helper'
+import {FastifyInstance} from "fastify";
 
-test('example is loaded', async (t) => {
-  const app = await build(t)
+describe("/Example", () => {
+  let app: FastifyInstance;
 
-  const res = await app.inject({
-    url: '/example'
+  beforeEach(async () => {
+    app = await buildApp();
+  });
+
+  afterEach(async () => {
+    await closeApp(app);
+  });
+
+  it('example is loaded', async () => {
+    const app = await buildApp()
+
+    const res = await app.inject({
+      url: '/example'
+    })
+
+    expect(res.payload).toStrictEqual('this is an example');
   })
+});
 
-  t.equal(res.payload, 'this is an example')
-})
