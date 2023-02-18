@@ -28,11 +28,13 @@
   "dependencies": {
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
+    "dotenv": "^16.0.3",
     "email-validator": "^2.0.4",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.7.1",
     "fastify-plugin": "^4.0.0",
     "luxon": "^3.2.1",
+    "pg": "^8.9.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -40,6 +42,7 @@
     "@types/jest": "^29.4.0",
     "@types/luxon": "^3.2.0",
     "@types/node": "^18.0.0",
+    "@types/pg": "^8.6.6",
     "@types/uuid": "^9.0.0",
     "concurrently": "^7.0.0",
     "fastify-tsconfig": "^1.0.1",
