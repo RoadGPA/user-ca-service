@@ -1,13 +1,14 @@
+import {UserSpecsId} from "../../../../Shared/User/SubDomains/UserSpecs/L1_Entity/ValueObjects/UserSpecsId";
+
 import {UserName} from "./ValueObjects/UserName";
 import {UserFirstName} from "./ValueObjects/UserFirstName";
 import {UserLastName} from "./ValueObjects/UserLastName";
-import {UserId} from "./ValueObjects/UserId";
 import {UserMiddleName} from "./ValueObjects/UserMiddleName";
 import {UserAge} from "./ValueObjects/UserAge";
 import {UserBirthDate} from "./ValueObjects/UserBirthDate";
 
 export class UserSpecs {
-  readonly #id: UserId;
+  readonly #id: UserSpecsId;
   readonly #name: UserName;
   readonly #middleName: UserMiddleName;
   readonly #firstName: UserFirstName;
@@ -15,7 +16,7 @@ export class UserSpecs {
   readonly #age: UserAge;
   readonly #birthDate: UserBirthDate;
 
-  constructor(id: UserId, name: UserName, middleName: UserMiddleName, firstName: UserFirstName, lastName: UserLastName, age: UserAge, birthDate: UserBirthDate) {
+  constructor(id: UserSpecsId, name: UserName, middleName: UserMiddleName, firstName: UserFirstName, lastName: UserLastName, age: UserAge, birthDate: UserBirthDate) {
     this.#id = id;
     this.#name = name;
     this.#middleName = middleName;
@@ -25,7 +26,7 @@ export class UserSpecs {
     this.#birthDate = birthDate;
   }
 
-  get id(): UserId {
+  get id(): UserSpecsId {
     return this.#id;
   }
 
