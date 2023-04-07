@@ -12,14 +12,14 @@ describe("/Example", () => {
     await closeApp(app);
   });
 
-  it('example is loaded', async () => {
+  it('user is loaded', async () => {
     const app = await buildApp()
 
     const res = await app.inject({
       url: '/example'
     })
 
-    expect(res.payload).toStrictEqual('this is an example');
+    expect(res.payload).toStrictEqual('this is an user');
   })
 });
 

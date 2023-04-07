@@ -17,10 +17,11 @@ export class SaveUserController {
 
   public async execute(user: UserPrimitiveRequest): Promise<void> {
     const userId = UUIDV4.create();
+    const userContactId = UUIDV4.create();
 
     const userPrimitive: UserPrimitive = {
       specs: {...user.specs, id: userId},
-      contact: {...user.contact, id: userId},
+      contact: {...user.contact, id: userContactId},
     };
 
     const _user = this.#userFactory.toEntity(userPrimitive);

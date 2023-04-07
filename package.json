@@ -2,17 +2,17 @@
   "name": "user-ca-service",
   "version": "1.0.0",
   "description": "This project was bootstrapped with Fastify-CLI.",
-  "main": "app.ts",
+  "main": "server.ts",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "jest",
-    "start": "npm run build:ts && fastify start -l info dist/app.js",
+    "start": "npm run build:ts && node dist/server.js",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
     "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
-    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js"
+    "dev:start": "npm run build:ts && node dist/server.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,8 @@
   "dependencies": {
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
+    "@fastify/type-provider-typebox": "^3.0.0",
+    "@sinclair/typebox": "^0.26.8",
     "dotenv": "^16.0.3",
     "email-validator": "^2.0.4",
     "fastify": "^4.0.0",

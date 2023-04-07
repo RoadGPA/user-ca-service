@@ -1,0 +1,18 @@
+curl --location 'http://localhost:3000/user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "user": {
+        "specs": {
+            "name": "Steven",
+            "middleName": "N/A",
+            "firstName": "P",
+            "lastName": "A",
+            "age": 99,
+            "birthDate": "1900-01-01"
+        },
+        "contact": {
+            "cellphone": "506100000",
+            "email": "acme@myemail.com"
+        }
+    }
+}'
